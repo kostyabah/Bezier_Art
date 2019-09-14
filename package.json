@@ -1,0 +1,33 @@
+{
+  "name": "NotesApp",
+  "version": "0.0.1",
+  "description": "Notes application",
+  "scripts": {
+    "test": "webpack --devtool sourse-map --mode production",
+    "dev": "webpack-dev-server --mode development",
+    "prod": "webpack --mode production"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
+    "@babel/plugin-transform-react-jsx": "^7.2.0",
+    "auto-prefixer": "^0.4.2",
+    "babel-loader": "^8.0.4",
+    "babel-runtime": "^6.26.0",
+    "css-loader": "^1.0.1",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.24.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.7.2"
+  },
+  "dependencies": {
+    "axios": "^0.9.1",
+    "body-parser": "^1.12.3",
+    "cors": "*",
+    "express": "*",
+    "preact": "^8.4.2"
+  }
+}
