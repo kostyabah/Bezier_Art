@@ -1,7 +1,7 @@
 var express = require("express"),
-	multer = require('multer'),
-	fs = require("fs"),
-	upload = multer(),
+	//multer = require('multer'),
+	// fs = require("fs"),
+	// upload = multer(),
 	path = require('path'),
 	app = express();
 
