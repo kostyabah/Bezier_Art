@@ -12,7 +12,7 @@ module.exports = {
         contentBase: path.join(__dirname, '/'),
         port: 8080
     },
-    devtool: "source-map",
+    //devtool: "source-map",
     module: {
         rules: [
             {

@@ -1,0 +1,205 @@
+*{
+    box-sizing: content-box
+}
+p{
+    font-size: 10pt;
+}
+html, body, #app{
+    height: 100%;
+    overflow: hidden;
+    margin : 0px;
+}
+
+@over : scroll, hidden, auto ;
+
+each(@over, {
+    .overflow-y-@{value}{
+        overflow: @value;
+    }
+    .overflow-x-@{value}{
+        overflow: @value;
+    }
+    .overflow-@{value}{
+        overflow: @value;
+    }
+});
+
+//@percent: 0, 25, 75, 100;
+
+each(range(0,100,25), {
+    .h-@{value}{
+        height: percentage(@value/100);
+    }
+    .w-@{value}{
+        width: percentage(@value/100);
+    }
+})
+
+.row{
+    display: flex;
+    flex-direction: row;
+}
+.col{
+    display: flex;
+    flex-direction: column;
+}
+
+.row-reverse{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.col-reverse{
+    display: flex;
+    flex-direction: column-reverse;
+}
+.flex(@number){
+    flex: @number;
+    
+}
+
+.margin(@k, @val, @size){
+    .m@{k}-@{size}{
+        each(@val,{
+            margin-@{value} : @size em
+        })
+    }
+}
+
+.padding(@k, @val, @size){
+    .p@{k}-@{size}{
+        each(@val,{
+            padding-@{value} : @size em
+        })
+    }
+}
+
+@pos_hash:{
+    l: left;
+    r: right;
+    x: left, right; 
+    t: top;
+    b: bottom;
+    y: top, bottom; 
+}
+each(range(0, 11), {
+    
+    each(@pos_hash, .(@v, @k){
+        .margin(@k, @v, @value)
+    })
+    each(@pos_hash, .(@v, @k){
+        .padding(@k, @v, @value)
+    })
+    
+    .flex-@{value}{
+        .flex(@value)
+    }
+    .size-@{value} {
+        font-size: @value * 5px ;
+    }
+    .basis-@{value}{
+        flex-basis: @value * 1em;  
+    }
+    .wp-@{value}{
+        width: @value * 1em 
+    }
+    .hp-@{value}{
+        height: @value * 1em
+    }
+    
+    .p-@{value}{
+        padding: @value * 1em ;
+    }
+    .m-@{value}{
+        margin: @value * 1em ;
+    }
+    
+})
+
+.mx-auto {
+    margin: auto
+}
+
+
+.pos-a{
+    position: absolute
+}
+.pos-r{
+    position: relative
+}
+
+@colors: black, silver, grey, white, maroon,
+        red, purple, fuchsia, green, lime, 
+        olive, yellow, navy, blue, teal, aqua;
+
+each(@colors, {
+    .text-@{value}{
+        color: @value
+    }
+    .bg-@{value}{
+        background-color: @value
+    }
+    .border-@{value}{
+        border: 2px solid @value
+    }
+});
+
+
+.block{
+    .col;
+
+    .header{
+        .row;
+        .flex(1);
+    }
+    .body{
+        .row;
+        .flex(4);
+    }
+    .footer{
+        .row;
+        .flex(1);
+    }
+}
+
+.all {
+    width: 100%;
+    height: 100%;
+}
+
+.all-pos{
+    .pos-a;
+    .all;
+    left: 0px;
+    top: 0px;   
+}
+
+.file{
+    
+    .pos-r;
+    & * {
+        .all-pos;
+    }
+    & input[type=file]{
+        opacity: 0;
+        z-index: 1
+    }
+    //&:extend(button);
+}
+     
+    
+    
+.events-none{
+    pointer-events: none;
+}
+
+.range{
+    
+    .pos-r;
+    
+    //border : 3px solid red;
+    .circle-pen{
+        .events-none;
+        border: 1px solid black;
+    }
+}
+
