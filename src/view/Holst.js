@@ -168,7 +168,7 @@ export default connect(
                                 />
                                 <ellipse
                                     key={`front-${index}`}
-                                    r={3}
+                                    r={4}
                                     index={index}
                                     cx={ax}
                                     cy={ay}
@@ -181,7 +181,7 @@ export default connect(
                                     index={index}
                                     cx={bx}
                                     cy={by}
-                                    r={3}
+                                    r={4}
                                     onChange={props.directChange}
                                     isfront={false}
                                     fill="blue"
@@ -191,7 +191,7 @@ export default connect(
                                 key={`center-${index}`}
                                 cx={x}
                                 cy={y}
-                                r={3}
+                                r={4}
                                 index={index}
                                 fill={fill}
                                 onSubClick={props.deleteCircle}
