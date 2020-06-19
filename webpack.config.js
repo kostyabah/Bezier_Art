@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 var path = require("path");
 var preact = require("preact");
-module.exports = {
+module.exports = (_, args) => ({
     entry: "./main.js",
     output: {
         path: path.join(__dirname, 'build'),
@@ -12,7 +12,7 @@ module.exports = {
         contentBase: path.join(__dirname, '/'),
         port: 8080
     },
-    //devtool: "source-map",
+    devtool: args.mode === "production" ? false : "source-map",
     module: {
         rules: [
             {
@@ -79,4 +79,4 @@ module.exports = {
             }
         ]
     }
-};
+});
