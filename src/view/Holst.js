@@ -14,10 +14,10 @@ let Path = ({ x, y, ax, ay, fill, ...props }) => {
     console.log(fill)
     return (
         <path
-            key={`path-${props.index}`}
+            key={`path-${props.keyPath}`}
             x={x} y={y} ax={ax} ay={ay}
             fill={fill}
-            index={props.index}
+            index={props.keyPath}
             close
             lineWidth={1}
             onStart={props.onStart}
@@ -129,9 +129,8 @@ export default connect(
                 onSubClick={props.addPath}
             >
                 {/* <image src={props.image.url} />*/}
-                {shapes.map((item, index) => (
+                {shapes.map((item) => (
                     <Path {...item}
-                        index={index}
                         onStart={props.initChange}
                         onChange={props.editDirect}
                         onSelect={props.pathSelect}
