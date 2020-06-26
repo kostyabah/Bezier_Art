@@ -8,7 +8,7 @@ import PhotoScale from "./PhotoScale";
 
 
 export default connect(
-    ["image"],
+    ["image", "shapes"],
     ({ photo }, state) => ({
 
         changeUrl : event => photo.set({src : event.target.value}),
@@ -53,7 +53,7 @@ export default connect(
         }
 
     })
-)(({ readFile, image :{position, scale, src}, ...props }) => {
+)(({ readFile, shapes, image :{position, scale, src}, ...props }) => {
     //console.log(props.size)
     return (
         <div>
@@ -62,6 +62,12 @@ export default connect(
                     <button class="bg-olive text-white"> Фотка </button>
                     <input type="file" onChange={readFile} />
                 </div>
+                <button onClick={() => window.download("png")}>
+                    png
+                </button>
+                <button onClick={() => window.download(shapes)}>
+                    json
+                </button>
                 <input 
                     onInput = {props.changeUrl}
                     class = "all"

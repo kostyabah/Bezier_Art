@@ -120,12 +120,46 @@ export default connect(
             index == 0 || index == (array.length - 1)
         let { shapes, activeShape: {x, y, ax, ay, editAll, mainIndex} } = props
         console.log(props)
+
+        let onInitDownload = (elem) =>{
+            if(window.download || !elem) return;
+            window.download = (config) => {
+                let link = document.createElement("a");
+                if(config === "png"){
+                    let {width, height} = elem.base.style;
+                    Object.assign(elem.base.style, {
+                        width : width * 5,
+                        height: height* 5
+                    });
+                    
+                    
+                    link.download = "vector.png";
+                    link.href = elem.base.toDataURL("image/png;base64");
+                    
+                    link.click();
+                    Object.assign(elem.base.style, {
+                        width,
+                        height
+                    });
+                    //document.body.removeChild(output);
+                }else{
+                    let encoded = encodeURIComponent(JSON.stringify(config, null, 4))
+                    link.href = "data:text/json;charset=utf-8," + encoded
+                    link.download = "vector.json"
+                    link.click() 
+                }
+
+                
+
+            }
+        }
         return (
             <Canvas lineWidth={1}
                 //onClick={props.click}
                 onStart={props.initChange}
                 onChange={props.editDirect}
                 //onLoad={props.addPath}
+                ref = {onInitDownload}
                 onSubClick={props.addPath}
             >
                 {/* <image src={props.image.url} />*/}
