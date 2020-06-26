@@ -4,20 +4,13 @@ import { connect } from "../mc/model-view"
 import { setHueLight } from "../mc/updater"
 
 export let ColorPicker = connect(
-    ["pen"],
-    ({path, merge}) => ({
+    ["pen", "activeColor"],
+    ({path, merge}, {activeColor}) => ({
 
-        setFill:({}, {ctrl, getColor}) => ctrl 
-            ? path.set({
-                fill : getColor()
-            })
-            : merge({
-                pen : {
-                    x: 0,
-                    y: 0,
-                    arround : getColor()
-                }
-            })
+        setFill:({}, {ctrl, getColor}) => path.set({
+            fill : getColor()
+        })
+            
         ,
         setRadius: ({r}) => merge({
             pen :{radius : r}
@@ -40,11 +33,11 @@ export let ColorPicker = connect(
         */
     })
 )(
-    ({pen, ...on}) => {
+    ({pen, activeColor, ...on}) => {
         let radial = {
             type : "radial",
-            config : [ pen.x, pen.y, 1, pen.x, pen.y, 40],
-            colors : [pen.center, pen.arround]
+            config : [pen.x, pen.y, 1, pen.x, pen.y, 40],
+            colors : [pen.center, activeColor]
         }
         return (
             <Canvas
