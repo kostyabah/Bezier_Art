@@ -73,6 +73,8 @@ each(range(0,100,25), {
     }
 }
 
+ 
+
 @pos_hash:{
     l: left;
     r: right;
@@ -127,6 +129,14 @@ each(range(0, 11), {
     position: relative
 }
 
+@justify: center, flex-end, flex-start, space-around, space-between;
+
+each(@justify, {
+    .jfy-@{value}{
+        justify-content: @value
+    }
+})
+
 @colors: black, silver, grey, white, maroon,
         red, purple, fuchsia, green, lime, 
         olive, yellow, navy, blue, teal, aqua;
@@ -176,12 +186,14 @@ each(@colors, {
 .file{
     
     .pos-r;
+
     & * {
         .all-pos;
+        box-sizing: border-box;
     }
     & input[type=file]{
         opacity: 0;
-        z-index: 1
+        z-index: 1;
     }
     //&:extend(button);
 }

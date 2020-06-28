@@ -16,7 +16,7 @@ export default () => (
         </div>
 
         <div class="flex-2 col">
-            <PhotoView class="flex-2 col" />
+            <PhotoView class="flex-3 col" />
             <ColorPicker class="flex-1" />
         </div>
     </div>

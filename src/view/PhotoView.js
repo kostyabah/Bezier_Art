@@ -57,20 +57,21 @@ export default connect(
     //console.log(props.size)
     return (
         <div>
-            <div class="row"> 
-                <div class="basis-3 file">     
+            <div class="row jfy-space-around"> 
+                <div class="basis-5 file">     
                     <button class="bg-olive text-white"> Фотка </button>
                     <input type="file" onChange={readFile} />
                 </div>
-                <button onClick={() => window.download("png")}>
+                <button class = "basis-3" onClick={() => window.download("png")}>
                     png
                 </button>
-                <button onClick={() => window.download(shapes)}>
+                <button class = "basis-3" onClick={() => window.download(shapes)}>
                     json
                 </button>
                 <input 
+                    placeholder = "вставьте url фото"
                     onInput = {props.changeUrl}
-                    class = "all"
+                    //class = "all"
                 />
             </div>
             
