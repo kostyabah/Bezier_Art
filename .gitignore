@@ -1,4 +1,5 @@
 .DS_Store
+build/
 node_modules/
 etc/config.json
 script
