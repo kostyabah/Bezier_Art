@@ -24,7 +24,7 @@
     "webpack-dev-server": "^3.10.1"
   },
   "dependencies": {
-    "axios": "^0.9.1",
+    "axios": "^0.18.1",
     "body-parser": "^1.12.3",
     "cors": "*",
     "express": "*",
